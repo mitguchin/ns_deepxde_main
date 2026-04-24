@@ -59,3 +59,64 @@ Depth: 5 hidden layers with 64 neurons each.
 
 Activation: Tanh(Hyperbolic Tangent) is utilized to ensure smooth higher-order derivatives required for the Laplacian
 ($\nabla^2$) terms in the PDE loss.
+
+* Physics-Informed Training (Autograd)
+
+Using the DeepXDE framework, the physical residuals are optimized:
+
+
+PDE Loss: Evaluated at 2,000 domain points to enforce fluid conservation laws.
+
+BC Loss: Evaluated at 200 boundary points to satisfy Dirichlet conditions.
+
+Automatic Differentiation: Employs Jacobians & Hessians to calculate exact spatial derivatives without the trucation errors of traditional mesh-based solvers.
+
+
+---
+
+3. Two stage Optimization Strategy
+
+A hybrid approach was implemented to achieve both robust exploration and high-precision convergence:
+
+
+* Adam Optimizer:
+
+Epochs: 10,000
+
+Used for the initial training phase to navigate the loss landscape and establish the general flow field.
+
+
+* L-BFGS Optimizer:
+
+Max Iterations: 3,000
+
+A second-order optimizer that utilizes Hessian approximations to achieve high-precision refinement in the final training stage.
+
+
+---
+
+4. Result & Visualization
+
+The trained PINN act as a continuous surrogate model, allowing for near-instantaneous inference at any coordinate within the domain.
+
+
+* Flow Field Prediction:
+
+Predictions for velocity components ($u,v$) and pressure ($p$) were generated across 500,000 sample points.
+
+
+* Visualization:
+
+High-fidelity contour plots using the $jet$ colormap visualize the velocity gradients near the walls and the pressure drop across the channel.
+
+---
+
+
+5. Implementation Details
+
+
+* Framework: DeepXDE with a TensorFlow backend.
+
+* Key Libraries: NumPy for data processing, Matplotlib for scientific visualization.
+
+* Hardware: Optimized for CUDA-enabled GPU acceleration.
