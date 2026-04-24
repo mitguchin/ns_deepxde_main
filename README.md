@@ -100,9 +100,7 @@ A second-order optimizer that utilizes Hessian approximations to achieve high-pr
 The trained PINN act as a continuous surrogate model, allowing for near-instantaneous inference at any coordinate within the domain.
 
 * **Flow Field Prediction:**
-Predictions for velocity components ($$) & pressure ($$) were generated 500,000 sample points.
-
-The network was trained on a robust set of domain points to ensure the physical laws are strictly enforced across the spatio-temporal domain.
+Predictions for velocity components ($u, v$) & pressure ($p$) were generated 500,000 sample points.
 
 ![Domain Sampling]
 
