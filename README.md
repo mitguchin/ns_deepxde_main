@@ -99,15 +99,43 @@ A second-order optimizer that utilizes Hessian approximations to achieve high-pr
 
 The trained PINN act as a continuous surrogate model, allowing for near-instantaneous inference at any coordinate within the domain.
 
+* **Flow Field Prediction:**
+Predictions for velocity components ($$) & pressure ($$) were generated 500,000 sample points.
 
-* Flow Field Prediction:
+The network was trained on a robust set of domain points to ensure the physical laws are strictly enforced across the spatio-temporal domain.
 
-Predictions for velocity components ($u,v$) and pressure ($p$) were generated across 500,000 sample points.
+![Domain Sampling]
 
+<img width="988" height="867" alt="1" src="https://github.com/user-attachments/assets/546e0585-cf81-466c-832d-88b559400e6a" />
 
-* Visualization:
+**Figure 1:**
+Distribution of domain and boundary sampling points used for PINN training.
 
+---
+
+* **Visualization:**
 High-fidelity contour plots using the $jet$ colormap visualize the velocity gradients near the walls and the pressure drop across the channel.
+
+![u-velocity]
+
+<img width="1859" height="468" alt="2" src="https://github.com/user-attachments/assets/29e7eff0-248e-48ee-97f0-d443c3d0b544" />
+
+**Figure 2:**
+Predicted u-velocity field showing the horizontal flow development.
+
+![v-velocity]
+
+<img width="1820" height="468" alt="3" src="https://github.com/user-attachments/assets/5509362a-90d6-4fc1-b14d-cbe5c94ffd10" />
+
+**Figure 3:**
+Predicted v-velocity field capturing the vertical flow components near the inlet.
+
+![Pressure]
+
+<img width="1835" height="462" alt="4" src="https://github.com/user-attachments/assets/801687ad-546c-41ec-881e-c73135b46588" />
+
+**Figure 4:**
+Predicted pressure field illustrating the consistent pressure drop across the domain.
 
 ---
 
