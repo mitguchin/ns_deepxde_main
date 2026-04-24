@@ -22,6 +22,7 @@ $$u \frac{\partial v}{\partial x} + v \frac{\partial v}{\partial y} + \frac{1}{\
 
 
 Continuity:
+
 $$\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0$$
 
 
